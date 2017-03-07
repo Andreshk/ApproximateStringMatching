@@ -182,7 +182,7 @@ size_t cutOffDynProg(const std::string& p, const std::string& t, size_t k)
 }
 
 // Calculating only certain parts from each diagonal:
-// T(m,n) = O(kn) average and O(mn) worst-case; M(m,n) = O(m)
+// T(m,n) = O(kn) average and O(mn) worst-case; M(m,n) = O(k)
 size_t diagTransitions(const std::string& p, const std::string& t, size_t k)
 {
     // signed integer type needed for representation of -infinity
@@ -218,9 +218,9 @@ size_t diagTransitions(const std::string& p, const std::string& t, size_t k)
     return matches;
 }
 
-// Bitwise paralelized calculation of an entire column. When alphabet size = b (in practise O(1)) we have:
+// Bitwise parallelized calculation of an entire column. When alphabet size = b (in practise O(1)) we have:
 // T(m,n) = O(bm + n); M(n) = O(bm)
-size_t bitParalelized(const std::string& p, const std::string& t, size_t k)
+size_t bitParallelized(const std::string& p, const std::string& t, size_t k)
 {
     using bitmask = uint64_t;
     const size_t m = p.length(), n = t.length();
@@ -260,7 +260,7 @@ int main()
 
     // Simple sanity check:
     /*std::string p1 = "survey", p2 = "XYZsurgeryXYZXYZXYZsurgeryXYZ";
-    for (auto f : { fullDynProg,cutOffDynProg,diagTransitions,bitParalelized }) //lol
+    for (auto f : { fullDynProg,cutOffDynProg,diagTransitions,bitParallelized }) //lol
         std::cout << f(p1, p2, 2) << " ";
     std::cout << "\n";*/
 }
