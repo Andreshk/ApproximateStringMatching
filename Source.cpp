@@ -37,7 +37,7 @@ void levenshteinDemo(std::string_view p, std::string_view t, bool withTransposit
     // Pretty printing the entire matrix
     const size_t numw = std::to_string(m > n ? m : n).length();
     std::cout << std::string(numw + 2, ' ');
-    for (size_t j = 0; j < n; j++)
+    for (size_t j = 0; j < n - 1; j++)
         std::cout << " " << std::setw(numw) << t[j];
     std::cout << "\n";
     for (size_t i = 0; i < m; i++) {
